@@ -3,7 +3,10 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Kabosu",
-  description: "Kabosu comic-book memecoin landing page.",
+  description: "Kabosu lore and death-anniversary memecoin landing page.",
+  icons: {
+    icon: "/icon.svg",
+  },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

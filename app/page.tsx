@@ -5,65 +5,24 @@ import { motion, type Variants } from "motion/react"
 
 const CONTRACT_ADDRESS = "0xKABOSU000000000000000000000000000000000000"
 const COUNTDOWN_TARGET = "2026-05-24T00:00:00Z"
-
-const navItems = [
-  { label: "HOME", href: "#hero" },
-  { label: "TOKENOMICS", href: "#tokenomics" },
-]
+const UNISWAP_URL = `https://app.uniswap.org/#/swap?outputCurrency=${CONTRACT_ADDRESS}`
 
 const imageMap = {
   hero: "/images/kabosu/7.webp",
   mascot: "/images/kabosu/1.webp",
   logo: "/images/kabosu/1.webp",
   banner: "/images/kabosu/7.webp",
-  origin: "/images/kabosu/3.webp",
   cooking: "/images/kabosu/4.webp",
   computer: "/images/kabosu/5.webp",
-  laptop: "/images/kabosu/6.webp",
 }
 
-const tokenomics = [
-  {
-    title: "LP RENOUNCED",
-    value: "Locked forever",
-    detail: "The pack keeps liquidity aligned with the community.",
-    image: imageMap.cooking,
-    alt: "Kabosu cooking in the kitchen",
-  },
-  {
-    title: "CONTRACT",
-    value: "Verified",
-    detail: "The official Kabosu coin contract is the source of truth.",
-    image: imageMap.computer,
-    alt: "Kabosu using a computer",
-  },
-  {
-    title: "TAX",
-    value: "0%",
-    detail: "No buy tax. No sell tax. Just dog energy.",
-    image: imageMap.mascot,
-    alt: "Kabosu character art",
-  },
-  {
-    title: "FIXED SUPPLY",
-    value: "1,000,000,000",
-    detail: "1 billion $KABOSU fixed supply.",
-    image: imageMap.laptop,
-    alt: "Kabosu with laptop and coffee",
-  },
-]
-
 const memeTiles = [
-  { label: "Sala Kabosu", image: imageMap.origin },
   { label: "Chef Kabosu", image: imageMap.cooking },
   { label: "Computer Kabosu", image: imageMap.computer },
-  { label: "Coffee Kabosu", image: imageMap.laptop },
   { label: "Sakura Kabosu", image: imageMap.banner },
   { label: "Pack Kabosu", image: "/images/kabosu/2.webp" },
-  { label: "Lore Drop", image: imageMap.origin },
   { label: "Kitchen Alpha", image: imageMap.cooking },
   { label: "Desk Mode", image: imageMap.computer },
-  { label: "Late Night Build", image: imageMap.laptop },
   { label: "Doge Origin", image: imageMap.mascot },
   { label: "Verify Everything", image: imageMap.cooking },
 ]
@@ -183,7 +142,7 @@ function Countdown() {
         className="mx-auto max-w-6xl rounded-[2rem] border-[4px] border-black bg-[#FFF7E7] p-6 shadow-[10px_10px_0_#000] md:p-10"
       >
         <motion.p variants={childVariants} className="text-center font-['Fredoka'] text-sm font-black uppercase tracking-[0.25em] text-[#9F6B3A]">
-          Anniversary Countdown
+          Death Anniversary Countdown
         </motion.p>
         <motion.h2 variants={childVariants} className="mt-2 text-center font-['Bungee'] text-4xl uppercase leading-none text-[#5B392A] md:text-6xl">
           May 24, 2026
@@ -279,13 +238,7 @@ export default function KabosuPage() {
             </span>
           </a>
 
-          <div className="hidden items-center gap-7 md:flex">
-            {navItems.map((item) => (
-              <a key={item.label} href={item.href} className="font-['Bungee'] text-sm uppercase tracking-wide text-[#FFF7E7] transition hover:text-[#F6C86A]">
-                {item.label}
-              </a>
-            ))}
-          </div>
+          <div className="hidden flex-1 md:block" />
 
           <div className="flex items-center gap-2">
             {["X", "TG"].map((label) => (
@@ -322,10 +275,10 @@ export default function KabosuPage() {
               Kabosu
             </motion.h1>
             <motion.p variants={childVariants} className="mx-auto mt-6 max-w-2xl font-['Comic_Neue'] text-2xl font-bold leading-tight text-[#5B392A] drop-shadow-[1px_1px_0_#fff] lg:mx-0">
-              The official Kabosu coin, celebrating Doge lore, meme culture, and the anniversary of the world's most beloved Shiba Inu.
+              The official Kabosu coin, celebrating Doge lore, meme culture, and the death anniversary of the world's most beloved Shiba Inu.
             </motion.p>
             <motion.div variants={childVariants} className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
-              <a href="#tokenomics" className="rounded-full border-[4px] border-black bg-[#F6C86A] px-10 py-4 font-['Bungee'] text-xl uppercase text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1 hover:bg-[#E49A43]">
+              <a href={UNISWAP_URL} target="_blank" rel="noreferrer" className="rounded-full border-[4px] border-black bg-[#F6C86A] px-10 py-4 font-['Bungee'] text-xl uppercase text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1 hover:bg-[#E49A43]">
                 Buy Kabosu
               </a>
               <a href="#about" className="rounded-full border-[4px] border-black bg-white px-10 py-4 font-['Bungee'] text-xl uppercase text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1">
@@ -355,16 +308,16 @@ export default function KabosuPage() {
           className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]"
         >
           <motion.div variants={childVariants}>
-            <ArtFrame src={imageMap.origin} alt="Kabosu in the sala set" label="Sala Set" className="aspect-square rounded-[2rem]" />
+            <ArtFrame src={imageMap.mascot} alt="Kabosu, the original Doge Shiba Inu" label="Kabosu Lore" className="aspect-square rounded-[2rem]" />
           </motion.div>
           <motion.div variants={childVariants}>
             <ComicTitle eyebrow="Origin Story" title="The Doge Lore" />
             <div className="space-y-6 font-['Comic_Neue'] text-2xl font-bold leading-tight text-[#5B392A] drop-shadow-[1px_1px_0_#fff]">
               <p>
-                Kabosu is the Shiba Inu face that helped define internet meme history. The official Kabosu coin honors that legacy with a warm sakura world, community proof, and dog-first meme energy.
+                Kabosu is the actual Shiba Inu whose face helped define internet meme history. Her expression became the original Doge image, turning a real rescue dog into one of the most recognizable memes in the world.
               </p>
               <p>
-                The sala-set artwork anchors the origin section: cozy, recognizable, and true to the spirit of the original Doge.
+                Kabosu was loved by her owner, Japanese kindergarten teacher Atsuko Sato. She died of leukemia two years ago, and this page honors the dog, the story, and the legacy behind the meme.
               </p>
             </div>
           </motion.div>
@@ -383,8 +336,8 @@ export default function KabosuPage() {
           <motion.div variants={childVariants} className="grid gap-6 md:grid-cols-3">
             {[
               ["No insiders", "Kabosu is built for a community that wants the dog, the art, and the proof up front.", imageMap.hero],
-              ["Community cooked", "The kitchen scene becomes the signal: the pack is cooking for the anniversary.", imageMap.cooking],
-              ["Builders online", "The computer and coffee scenes give the site a real builder-culture lane.", imageMap.computer],
+              ["Community cooked", "The kitchen scene becomes the signal: the pack is cooking for the death anniversary.", imageMap.cooking],
+              ["Doge legacy", "The story stays centered on Kabosu, Atsuko Sato, and the real dog behind internet meme history.", imageMap.computer],
             ].map(([title, copy, image]) => (
               <div key={title} className="border-[4px] border-black bg-white p-4 text-[#2C2C2C] shadow-[8px_8px_0_#000]">
                 <ArtFrame src={image} alt={`${title} Kabosu art`} label={title} className="aspect-square shadow-none" />
@@ -392,62 +345,6 @@ export default function KabosuPage() {
                 <p className="mt-4 font-['Comic_Neue'] text-xl font-bold leading-tight">{copy}</p>
               </div>
             ))}
-          </motion.div>
-        </motion.div>
-      </section>
-
-      <MarqueeTape />
-
-      <section id="tokenomics" className="kabosu-sky px-5 py-20 md:py-28">
-        <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mx-auto max-w-7xl">
-          <ComicTitle eyebrow="Tokenomics" title="Don't Trust, Verify" />
-
-          <motion.div variants={childVariants} className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {tokenomics.map((item) => (
-              <motion.a
-                key={item.title}
-                href="#official-proof"
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="block border-[4px] border-black bg-white p-4 text-center text-[#2C2C2C] shadow-[8px_8px_0_#000]"
-              >
-                <ArtFrame src={item.image} alt={item.alt} label={item.title} className="aspect-square shadow-none" />
-                <h3 className="mt-5 font-['Bungee'] text-2xl uppercase">{item.title}</h3>
-                <p className="mt-2 font-['Fredoka'] text-xl font-black">{item.value}</p>
-                <p className="mt-2 font-['Comic_Neue'] text-lg font-bold leading-tight">{item.detail}</p>
-              </motion.a>
-            ))}
-          </motion.div>
-
-          <motion.p variants={childVariants} className="mt-10 text-center font-['Bungee'] text-lg uppercase text-[#9F6B3A] drop-shadow-[1px_1px_0_#fff]">
-            Anon, click the cards to see onchain proof. Don't trust, verify.
-          </motion.p>
-
-          <motion.div variants={childVariants} className="mt-10 grid gap-8 rounded-[2rem] border-[4px] border-black bg-white p-6 text-[#2C2C2C] shadow-[10px_10px_0_#000] md:p-10 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="grid place-items-center">
-              <div className="relative h-64 w-64 rounded-full border-[4px] border-black bg-[conic-gradient(#F6C86A_0_10%,#B9D98B_10%_18%,#F5A9BC_18%_100%)] shadow-[6px_6px_0_#000]">
-                <div className="absolute inset-16 grid place-items-center rounded-full border-[4px] border-black bg-[#5B392A] text-center font-['Bungee'] text-2xl text-[#F6C86A]">
-                  $KABOSU
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-['Bungee'] text-4xl uppercase">Where's the supply?</h3>
-              <div className="mt-6 space-y-5">
-                {[
-                  ["LP locked", "10%", "#F6C86A", "Pool and liquidity proof goes here."],
-                  ["Burned", "8%", "#4BB749", "Burn or fee capture proof goes here."],
-                  ["Circulating", "82%", "#F5A9BC", "1 billion $KABOSU fixed supply."],
-                ].map(([label, value, color, detail]) => (
-                  <div key={label} className="flex gap-4">
-                    <span className="mt-1 h-7 w-7 shrink-0 rounded-full border-[3px] border-black" style={{ backgroundColor: color }} />
-                    <div>
-                      <p className="font-['Bungee'] text-xl uppercase">{label}: {value}</p>
-                      <p className="font-['Comic_Neue'] text-lg font-bold leading-tight">{detail}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </motion.div>
         </motion.div>
       </section>
@@ -461,39 +358,6 @@ export default function KabosuPage() {
                 <img src={tile.image} alt={tile.label} className="h-full w-full object-cover" />
               </motion.div>
             ))}
-          </motion.div>
-        </motion.div>
-      </section>
-
-      <MarqueeTape />
-
-      <section className="kabosu-sky px-5 py-20 md:py-28">
-        <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <motion.div variants={childVariants}>
-            <ComicTitle eyebrow="Artist" title="Original Art Leads" />
-            <div className="space-y-6 font-['Comic_Neue'] text-2xl font-bold leading-tight text-[#5B392A] drop-shadow-[1px_1px_0_#fff]">
-              <p>
-                The official Kabosu coin keeps the art, story, and community aligned around the dog that started a generation of internet culture.
-              </p>
-              <p>
-                The laptop and coffee scene gives the page a builder mood: late-night work, community coordination, and a dog at the center of the desk.
-              </p>
-            </div>
-          </motion.div>
-          <motion.div variants={childVariants}>
-            <ArtFrame src={imageMap.laptop} alt="Kabosu using a laptop with coffee" label="Laptop + Coffee" className="aspect-[5/4] rounded-[2rem]" />
-          </motion.div>
-        </motion.div>
-      </section>
-
-      <section className="bg-[#F8D7E3] px-5 py-20 md:py-28">
-        <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="mx-auto max-w-5xl text-center">
-          <ComicTitle title="The Comic" />
-          <motion.p variants={childVariants} className="mx-auto max-w-3xl font-['Comic_Neue'] text-2xl font-bold leading-tight text-[#5B392A] drop-shadow-[1px_1px_0_#fff]">
-            Follow the official Kabosu coin story through sakura panels, community art, and anniversary lore drops.
-          </motion.p>
-          <motion.div variants={childVariants} className="mt-10">
-            <ArtFrame src={imageMap.computer} alt="Kabosu using a computer" label="Comic Preview" className="mx-auto aspect-[3/4] max-w-xl rounded-[1.5rem]" />
           </motion.div>
         </motion.div>
       </section>
