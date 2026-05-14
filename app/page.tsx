@@ -6,6 +6,12 @@ import { motion, type Variants } from "motion/react"
 const CONTRACT_ADDRESS = "0xKABOSU000000000000000000000000000000000000"
 const COUNTDOWN_TARGET = "2026-05-24T00:00:00Z"
 const UNISWAP_URL = `https://app.uniswap.org/#/swap?outputCurrency=${CONTRACT_ADDRESS}`
+const OFFICIAL_X_URL = "https://x.com/officialkabosu"
+
+const NAV_SOCIAL_LINKS: { label: string; href: string; external?: boolean }[] = [
+  { label: "X", href: OFFICIAL_X_URL, external: true },
+  { label: "TG", href: "#official-socials" },
+]
 
 const imageMap = {
   hero: "/images/kabosu/7.webp",
@@ -21,13 +27,14 @@ const imageMap = {
 
 const memeTiles = [
   { label: "Chef Kabosu", image: imageMap.cooking },
-  { label: "Computer Kabosu", image: imageMap.computer },
+  { label: "CEO of X", image: "/images/kabosu/meme-ceo-x.png" },
+  { label: "Chart Mode", image: "/images/kabosu/meme-chart-rally.png" },
   { label: "Sakura Kabosu", image: imageMap.banner },
   { label: "Pack Kabosu", image: "/images/kabosu/2.webp" },
-  { label: "Kitchen Alpha", image: imageMap.cooking },
-  { label: "Desk Mode", image: imageMap.computer },
+  { label: "BTC Couch", image: "/images/kabosu/meme-btc-couch.png" },
   { label: "Doge Origin", image: imageMap.mascot },
-  { label: "Verify Everything", image: imageMap.cooking },
+  { label: "The Shepherd", image: "/images/kabosu/meme-elon-doge.png" },
+  { label: "Gamer Kabosu", image: "/images/kabosu/meme-gamer.png" },
 ]
 
 const sectionVariants: Variants = {
@@ -113,15 +120,16 @@ function ComicTitle({ eyebrow, title }: { eyebrow?: string; title: string }) {
 }
 
 function MarqueeTape() {
-  const text = "$KABOSU  $KABOSU  $KABOSU  $KABOSU  $KABOSU  $KABOSU"
+  const perLoop = 12
+  const items = Array.from({ length: perLoop * 2 }, (_, i) => (
+    <span key={i} className="shrink-0">
+      $KABOSU
+    </span>
+  ))
 
   return (
     <div className="relative z-20 overflow-hidden border-y-[4px] border-black bg-[#F6C86A] py-3 font-['Bungee'] text-xl uppercase text-[#3F281C] shadow-[0_8px_0_rgba(91,57,42,.35)]">
-      <div className="kabosu-marquee flex w-max gap-8 whitespace-nowrap">
-        <span>{text}</span>
-        <span>{text}</span>
-        <span>{text}</span>
-      </div>
+      <div className="kabosu-marquee flex w-max gap-8">{items}</div>
     </div>
   )
 }
@@ -196,7 +204,7 @@ export default function KabosuPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#FCE4EC] font-['Comic_Neue'] text-[#5B392A]">
       <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Fredoka:wght@400;600;700;900&family=Comic+Neue:wght@400;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@400;600;700;900&family=Comic+Neue:wght@400;700&display=swap");
 
         .kabosu-sky {
           background:
@@ -218,7 +226,7 @@ export default function KabosuPage() {
             transform: translateX(0);
           }
           to {
-            transform: translateX(-33.333%);
+            transform: translateX(-50%);
           }
         }
 
@@ -236,7 +244,7 @@ export default function KabosuPage() {
         <div className="flex items-center justify-between gap-4">
           <a href="#hero" className="flex items-center gap-3">
             <img src={imageMap.logo} alt="Kabosu logo" className="h-12 w-12 rounded-full border-[3px] border-black object-cover bg-[#F6C86A]" />
-            <span className="hidden font-['Bungee_Shade'] text-2xl uppercase text-[#F6C86A] drop-shadow-[2px_2px_0_#000] md:block">
+            <span className="hidden font-['Bungee'] text-2xl uppercase text-[#EEC44A] [-webkit-text-stroke:1.5px_#000] [paint-order:stroke_fill] drop-shadow-[2px_3px_0_#2a1a12] md:block">
               Kabosu
             </span>
           </a>
@@ -244,10 +252,11 @@ export default function KabosuPage() {
           <div className="hidden flex-1 md:block" />
 
           <div className="flex items-center gap-2">
-            {["X", "TG"].map((label) => (
+            {NAV_SOCIAL_LINKS.map(({ label, href, external }) => (
               <a
                 key={label}
-                href="#official-socials"
+                href={href}
+                {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 className="grid h-9 w-9 place-items-center rounded-full border-[3px] border-black bg-[#FFF7E7] font-['Bungee'] text-xs text-black transition hover:-translate-y-1 hover:bg-[#F6C86A]"
               >
                 {label}
@@ -269,12 +278,9 @@ export default function KabosuPage() {
             className="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.9fr]"
           >
           <div className="relative z-10 text-center lg:text-left">
-            <motion.p variants={childVariants} className="font-['Fredoka'] text-lg font-black uppercase tracking-[0.22em] text-[#9F6B3A] drop-shadow-[1px_1px_0_#fff]">
-              The original doge spirit under sakura skies
-            </motion.p>
             <motion.h1
               variants={childVariants}
-              className="mt-5 font-['Bungee'] text-[clamp(4rem,12vw,9rem)] uppercase leading-[0.85] text-[#FFF7E7] drop-shadow-[6px_6px_0_#5B392A]"
+              className="font-['Bungee'] text-[clamp(4rem,12vw,9rem)] uppercase leading-[0.85] text-[#EEC44A] [-webkit-text-stroke:clamp(3px,0.5vw,5px)_#3F281C] [paint-order:stroke_fill] drop-shadow-[6px_8px_0_#5B392A]"
             >
               Kabosu
             </motion.h1>
@@ -310,13 +316,13 @@ export default function KabosuPage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
-          className="mx-auto flex w-full max-w-[min(100%,56rem)] flex-col items-center gap-12 xl:max-w-[min(100%,64rem)]"
+          className="mx-auto flex w-full max-w-7xl flex-col items-center gap-12"
         >
           <motion.div variants={childVariants} className="w-full px-2 sm:px-6">
             <ComicTitle eyebrow="Origin Story" title="Kabosu Lore" />
           </motion.div>
           <motion.div variants={childVariants} className="flex w-full flex-col items-center">
-            <div className="w-full max-w-2xl space-y-6 text-center font-['Comic_Neue'] text-2xl font-bold leading-tight text-[#5B392A] drop-shadow-[1px_1px_0_#fff]">
+            <div className="w-full max-w-6xl space-y-6 text-center font-['Comic_Neue'] text-2xl font-bold leading-tight text-[#5B392A] drop-shadow-[1px_1px_0_#fff]">
               <p>
                 Kabosu was the real dog behind one of the most recognizable memes in internet history. She became a global icon after a single photo of her captured the internet's imagination.
               </p>
@@ -327,7 +333,7 @@ export default function KabosuPage() {
                 Kabosu passed away from leukemia two years ago. This project was made to honor her, and the woman who loved her: the dog, the owner, the story, and the legacy behind the meme.
               </p>
             </div>
-            <div className="mx-auto mt-10 grid w-full max-w-[20rem] grid-cols-1 justify-items-center gap-8 md:max-w-5xl md:grid-cols-[1fr_1.35fr_1fr] md:items-stretch md:gap-4 lg:gap-6">
+            <div className="mx-auto mt-10 grid w-full max-w-[20rem] grid-cols-1 justify-items-center gap-8 md:max-w-6xl md:grid-cols-[1fr_1.35fr_1fr] md:items-stretch md:gap-4 lg:gap-6">
               <ArtFrame
                 src={imageMap.lorePlushie}
                 alt="Kabosu sitting with bright yellow plush Doge bag"
@@ -389,7 +395,7 @@ export default function KabosuPage() {
       <footer className="kabosu-sky px-5 py-20 text-center">
         <div className="mx-auto max-w-5xl">
           <ArtFrame src={imageMap.hero} alt="Kabosu footer art" label="Join the Pack" className="mx-auto aspect-[16/9] max-w-3xl rounded-[2rem]" />
-          <h2 className="mt-12 font-['Bungee_Shade'] text-6xl uppercase leading-none text-[#F6C86A] drop-shadow-[5px_5px_0_#5B392A] md:text-8xl">
+          <h2 className="mt-12 font-['Bungee'] text-6xl uppercase leading-none text-[#EEC44A] [-webkit-text-stroke:3px_#3F281C] [paint-order:stroke_fill] drop-shadow-[6px_8px_0_#5B392A] md:text-8xl">
             Kabosu
           </h2>
         </div>
