@@ -29,10 +29,10 @@ const memeTiles = [
   { label: "Chef Kabosu", image: imageMap.cooking },
   { label: "CEO of X", image: "/images/kabosu/meme-ceo-x.png" },
   { label: "Chart Mode", image: "/images/kabosu/meme-chart-rally.png" },
-  { label: "Sakura Kabosu", image: imageMap.banner },
-  { label: "Pack Kabosu", image: "/images/kabosu/2.webp" },
+  { label: "Laptop & Boba", image: "/images/kabosu/meme-laptop-boba.png" },
+  { label: "Side Eye", image: "/images/kabosu/3.webp" },
   { label: "BTC Couch", image: "/images/kabosu/meme-btc-couch.png" },
-  { label: "Doge Origin", image: imageMap.mascot },
+  { label: "Sushi Chef", image: "/images/kabosu/meme-sushi-chef-upload.png" },
   { label: "The Shepherd", image: "/images/kabosu/meme-elon-doge.png" },
   { label: "Gamer Kabosu", image: "/images/kabosu/meme-gamer.png" },
 ]
@@ -292,7 +292,7 @@ export default function KabosuPage() {
                 Buy Kabosu
               </a>
               <a href="#about" className="rounded-full border-[4px] border-black bg-white px-10 py-4 font-['Bungee'] text-xl uppercase text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1">
-                Learn Lore
+                Learn More
               </a>
             </motion.div>
             <motion.div variants={childVariants}>
