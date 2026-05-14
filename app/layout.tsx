@@ -3,7 +3,7 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Kabosu",
-  description: "Kabosu lore and death-anniversary memecoin landing page.",
+  description: "Kabosu lore and anniversary memecoin landing page.",
   icons: {
     icon: "/icon.svg",
   },

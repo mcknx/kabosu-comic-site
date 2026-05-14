@@ -14,6 +14,9 @@ const imageMap = {
   banner: "/images/kabosu/7.webp",
   cooking: "/images/kabosu/4.webp",
   computer: "/images/kabosu/5.webp",
+  loreTogether: "/images/kabosu/kabosu-and-atsuko.png",
+  lorePlushie: "/images/kabosu/lore-plushie.png",
+  loreBlep: "/images/kabosu/lore-blep.png",
 }
 
 const memeTiles = [
@@ -142,7 +145,7 @@ function Countdown() {
         className="mx-auto max-w-6xl rounded-[2rem] border-[4px] border-black bg-[#FFF7E7] p-6 shadow-[10px_10px_0_#000] md:p-10"
       >
         <motion.p variants={childVariants} className="text-center font-['Fredoka'] text-sm font-black uppercase tracking-[0.25em] text-[#9F6B3A]">
-          Death Anniversary Countdown
+          Countdown
         </motion.p>
         <motion.h2 variants={childVariants} className="mt-2 text-center font-['Bungee'] text-4xl uppercase leading-none text-[#5B392A] md:text-6xl">
           May 24, 2026
@@ -254,16 +257,17 @@ export default function KabosuPage() {
         </div>
       </nav>
 
-      <section id="hero" className="kabosu-sky relative min-h-screen px-5 pb-20 pt-36">
-        <div className="absolute -left-20 top-28 h-48 w-48 rounded-full bg-[#F6C86A]" />
-        <div className="absolute -right-16 top-44 h-36 w-36 rounded-full bg-[#F5A9BC]" />
+      <section id="hero" className="kabosu-sky relative flex min-h-[100dvh] min-h-screen flex-col px-5 pb-16 pt-28 sm:pt-32 lg:pb-20">
+        <div className="pointer-events-none absolute -left-20 top-28 h-48 w-48 rounded-full bg-[#F6C86A]" />
+        <div className="pointer-events-none absolute -right-16 top-44 h-36 w-36 rounded-full bg-[#F5A9BC]" />
 
-        <motion.div
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.9fr]"
-        >
+        <div className="relative z-10 flex flex-1 flex-col justify-center py-6 sm:py-10">
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            animate="visible"
+            className="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.9fr]"
+          >
           <div className="relative z-10 text-center lg:text-left">
             <motion.p variants={childVariants} className="font-['Fredoka'] text-lg font-black uppercase tracking-[0.22em] text-[#9F6B3A] drop-shadow-[1px_1px_0_#fff]">
               The original doge spirit under sakura skies
@@ -275,7 +279,7 @@ export default function KabosuPage() {
               Kabosu
             </motion.h1>
             <motion.p variants={childVariants} className="mx-auto mt-6 max-w-2xl font-['Comic_Neue'] text-2xl font-bold leading-tight text-[#5B392A] drop-shadow-[1px_1px_0_#fff] lg:mx-0">
-              The official Kabosu coin, celebrating Doge lore, meme culture, and the death anniversary of the world's most beloved Shiba Inu.
+              The official Kabosu coin, celebrating Doge lore, meme culture, and the anniversary of the world's most beloved dog.
             </motion.p>
             <motion.div variants={childVariants} className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
               <a href={UNISWAP_URL} target="_blank" rel="noreferrer" className="rounded-full border-[4px] border-black bg-[#F6C86A] px-10 py-4 font-['Bungee'] text-xl uppercase text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1 hover:bg-[#E49A43]">
@@ -294,6 +298,7 @@ export default function KabosuPage() {
             <ArtFrame src={imageMap.banner} alt="Kabosu under cherry blossoms banner art" className="mx-auto aspect-[16/7] max-w-[720px] rounded-[2rem]" />
           </motion.div>
         </motion.div>
+        </div>
       </section>
 
       <Countdown />
@@ -305,20 +310,39 @@ export default function KabosuPage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
-          className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]"
+          className="mx-auto flex w-full max-w-[min(100%,56rem)] flex-col items-center gap-12 xl:max-w-[min(100%,64rem)]"
         >
-          <motion.div variants={childVariants}>
-            <ArtFrame src={imageMap.mascot} alt="Kabosu, the original Doge Shiba Inu" label="Kabosu Lore" className="aspect-square rounded-[2rem]" />
+          <motion.div variants={childVariants} className="w-full px-2 sm:px-6">
+            <ComicTitle eyebrow="Origin Story" title="Kabosu Lore" />
           </motion.div>
-          <motion.div variants={childVariants}>
-            <ComicTitle eyebrow="Origin Story" title="The Doge Lore" />
-            <div className="space-y-6 font-['Comic_Neue'] text-2xl font-bold leading-tight text-[#5B392A] drop-shadow-[1px_1px_0_#fff]">
+          <motion.div variants={childVariants} className="flex w-full flex-col items-center">
+            <div className="w-full max-w-2xl space-y-6 text-center font-['Comic_Neue'] text-2xl font-bold leading-tight text-[#5B392A] drop-shadow-[1px_1px_0_#fff]">
               <p>
-                Kabosu is the actual Shiba Inu whose face helped define internet meme history. Her expression became the original Doge image, turning a real rescue dog into one of the most recognizable memes in the world.
+                Kabosu was the real dog behind one of the most recognizable memes in internet history. She became a global icon after a single photo of her captured the internet's imagination.
               </p>
               <p>
-                Kabosu was loved by her owner, Japanese kindergarten teacher Atsuko Sato. She died of leukemia two years ago, and this page honors the dog, the story, and the legacy behind the meme.
+                That photo was taken by her owner, Atsuko Sato, a Japanese kindergarten teacher who adopted Kabosu from a shelter in 2008. Atsuko documented Kabosu's life on her personal blog for years, sharing the quiet, happy everyday moments that made her dog so beloved.
               </p>
+              <p>
+                Kabosu passed away from leukemia two years ago. This project was made to honor her, and the woman who loved her: the dog, the owner, the story, and the legacy behind the meme.
+              </p>
+            </div>
+            <div className="mx-auto mt-10 grid w-full max-w-[20rem] grid-cols-1 justify-items-center gap-8 md:max-w-5xl md:grid-cols-[1fr_1.35fr_1fr] md:items-stretch md:gap-4 lg:gap-6">
+              <ArtFrame
+                src={imageMap.lorePlushie}
+                alt="Kabosu sitting with bright yellow plush Doge bag"
+                className="aspect-square w-full max-w-[13rem] rounded-[1.25rem] md:max-w-none [&_img]:origin-center [&_img]:clip-path-[inset(0_11%_0_11%)]"
+              />
+              <ArtFrame
+                src={imageMap.loreTogether}
+                alt="Kabosu with her owner, Atsuko Sato — a quiet everyday moment shared on her blog."
+                className="aspect-[4/3] w-full max-w-[26rem] min-w-0 rounded-[1.25rem] md:max-w-none"
+              />
+              <ArtFrame
+                src={imageMap.loreBlep}
+                alt="Kabosu relaxing on bedding with playful expression"
+                className="aspect-square w-full max-w-[13rem] rounded-[1.25rem] md:max-w-none"
+              />
             </div>
           </motion.div>
         </motion.div>
@@ -332,11 +356,11 @@ export default function KabosuPage() {
           viewport={{ once: true, amount: 0.25 }}
           className="mx-auto max-w-6xl"
         >
-          <ComicTitle eyebrow="Community" title="Pack Takeover" />
+          <ComicTitle eyebrow="Community" title="Takeover" />
           <motion.div variants={childVariants} className="grid gap-6 md:grid-cols-3">
             {[
-              ["No insiders", "Kabosu is built for a community that wants the dog, the art, and the proof up front.", imageMap.hero],
-              ["Community cooked", "The kitchen scene becomes the signal: the pack is cooking for the death anniversary.", imageMap.cooking],
+              ["NO INSIDERS", "Kabosu is for a community that wants the dog, the art, and the community to grow", imageMap.hero],
+              ["THE COMMUNITY", "One dog brought us together. Now we keep her story going, one meme, one holder.", imageMap.cooking],
               ["Doge legacy", "The story stays centered on Kabosu, Atsuko Sato, and the real dog behind internet meme history.", imageMap.computer],
             ].map(([title, copy, image]) => (
               <div key={title} className="border-[4px] border-black bg-white p-4 text-[#2C2C2C] shadow-[8px_8px_0_#000]">
