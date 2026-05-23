@@ -1,10 +1,9 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useState } from "react"
 import { motion, type Variants } from "motion/react"
 
 const CONTRACT_ADDRESS = "0xKABOSU000000000000000000000000000000000000"
-const COUNTDOWN_TARGET = "2026-05-24T00:00:00Z"
 const UNISWAP_URL = `https://app.uniswap.org/#/swap?outputCurrency=${CONTRACT_ADDRESS}`
 const OFFICIAL_X_URL = "https://x.com/officialkabosu"
 
@@ -49,26 +48,6 @@ const sectionVariants: Variants = {
 const childVariants: Variants = {
   hidden: { opacity: 1, y: 0 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-}
-
-function useCountdown(target: string) {
-  const targetTime = useMemo(() => new Date(target).getTime(), [target])
-  const [now, setNow] = useState(targetTime)
-
-  useEffect(() => {
-    setNow(Date.now())
-    const timer = window.setInterval(() => setNow(Date.now()), 1000)
-    return () => window.clearInterval(timer)
-  }, [])
-
-  const distance = Math.max(0, targetTime - now)
-
-  return {
-    days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((distance / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((distance / (1000 * 60)) % 60),
-    seconds: Math.floor((distance / 1000) % 60),
-  }
 }
 
 function ArtFrame({
@@ -131,47 +110,6 @@ function MarqueeTape() {
     <div className="relative z-20 overflow-hidden border-y-[4px] border-black bg-[#F6C86A] py-3 font-['Bungee'] text-xl uppercase text-[#3F281C] shadow-[0_8px_0_rgba(91,57,42,.35)]">
       <div className="kabosu-marquee flex w-max gap-8">{items}</div>
     </div>
-  )
-}
-
-function Countdown() {
-  const time = useCountdown(COUNTDOWN_TARGET)
-  const blocks = [
-    ["DAYS", time.days],
-    ["HOURS", time.hours],
-    ["MINS", time.minutes],
-    ["SECS", time.seconds],
-  ]
-
-  return (
-    <section id="countdown" className="relative px-5 py-16">
-      <motion.div
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-        className="mx-auto max-w-6xl rounded-[2rem] border-[4px] border-black bg-[#FFF7E7] p-6 shadow-[10px_10px_0_#000] md:p-10"
-      >
-        <motion.p variants={childVariants} className="text-center font-['Fredoka'] text-sm font-black uppercase tracking-[0.25em] text-[#9F6B3A]">
-          Countdown
-        </motion.p>
-        <motion.h2 variants={childVariants} className="mt-2 text-center font-['Bungee'] text-4xl uppercase leading-none text-[#5B392A] md:text-6xl">
-          May 24, 2026
-        </motion.h2>
-        <motion.div variants={childVariants} className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-          {blocks.map(([label, value]) => (
-            <div key={label} className="border-[4px] border-black bg-[#F5A9BC] p-5 text-center shadow-[6px_6px_0_#000]">
-              <div className="font-['Bungee'] text-4xl text-[#FFF7E7] drop-shadow-[3px_3px_0_#5B392A] md:text-6xl">
-                {String(value).padStart(2, "0")}
-              </div>
-              <div className="mt-2 font-['Fredoka'] text-sm font-black uppercase tracking-[0.16em] text-[#5B392A]">
-                {label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </motion.div>
-    </section>
   )
 }
 
@@ -307,7 +245,6 @@ export default function KabosuPage() {
         </div>
       </section>
 
-      <Countdown />
       <MarqueeTape />
 
       <section id="about" className="kabosu-sky px-5 py-20 md:py-28">
