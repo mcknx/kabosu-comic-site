@@ -4,7 +4,8 @@ import { useState } from "react"
 import { motion, type Variants } from "motion/react"
 
 const CONTRACT_ADDRESS = "CqWwyxPvkAd7qAnLY5eEncbu1m58gMoqAYUwAm6kDoge"
-const UNISWAP_URL = `https://app.uniswap.org/#/swap?outputCurrency=${CONTRACT_ADDRESS}`
+const SOL_MINT = "So11111111111111111111111111111111111111112"
+const BUY_URL = `https://jup.ag/?sell=${SOL_MINT}&buy=${CONTRACT_ADDRESS}`
 const OFFICIAL_X_URL = "https://x.com/officialkabosu"
 
 const NAV_SOCIAL_LINKS: { label: string; href: string; external?: boolean }[] = [
@@ -226,7 +227,7 @@ export default function KabosuPage() {
               The official Kabosu coin, celebrating Doge lore, meme culture, and the anniversary of the world's most beloved dog.
             </motion.p>
             <motion.div variants={childVariants} className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
-              <a href={UNISWAP_URL} target="_blank" rel="noreferrer" className="rounded-full border-[4px] border-black bg-[#F6C86A] px-10 py-4 font-['Bungee'] text-xl uppercase text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1 hover:bg-[#E49A43]">
+              <a href={BUY_URL} target="_blank" rel="noreferrer" className="rounded-full border-[4px] border-black bg-[#F6C86A] px-10 py-4 font-['Bungee'] text-xl uppercase text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1 hover:bg-[#E49A43]">
                 Buy Kabosu
               </a>
               <a href="#about" className="rounded-full border-[4px] border-black bg-white px-10 py-4 font-['Bungee'] text-xl uppercase text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1">
