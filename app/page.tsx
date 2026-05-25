@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion, type Variants } from "motion/react"
 
-const CONTRACT_ADDRESS = "0xKABOSU000000000000000000000000000000000000"
+const CONTRACT_ADDRESS = "CqWwyxPvkAd7qAnLY5eEncbu1m58gMoqAYUwAm6kDoge"
 const UNISWAP_URL = `https://app.uniswap.org/#/swap?outputCurrency=${CONTRACT_ADDRESS}`
 const OFFICIAL_X_URL = "https://x.com/officialkabosu"
 
@@ -124,7 +124,7 @@ function ContractStrip() {
 
   return (
     <div className="mx-auto mt-8 flex max-w-3xl flex-col overflow-hidden border-[4px] border-black bg-white shadow-[8px_8px_0_#000] md:flex-row">
-      <div className="flex-1 truncate px-4 py-4 font-['Fredoka'] text-sm font-black text-[#2C2C2C] md:text-base">
+      <div className="flex-1 truncate px-4 py-4 font-['Fredoka'] text-sm font-black uppercase text-[#2C2C2C] md:text-base">
         CA: {CONTRACT_ADDRESS}
       </div>
       <button
