@@ -1,15 +1,17 @@
 "use client"
 
+import { useState } from "react"
 import { motion, type Variants } from "motion/react"
 
-const CONTRACT_ADDRESS = "CqWwyxPvkAd7qAnLY5eEncbu1m58gMoqAYUwAm6kDoge"
+const CONTRACT_ADDRESS = ""
 const SOL_MINT = "So11111111111111111111111111111111111111112"
-const BUY_URL = `https://jup.ag/?sell=${SOL_MINT}&buy=${CONTRACT_ADDRESS}`
+const BUY_URL = CONTRACT_ADDRESS
+  ? `https://jup.ag/?sell=${SOL_MINT}&buy=${CONTRACT_ADDRESS}`
+  : "https://jup.ag/"
 const OFFICIAL_X_URL = "https://x.com/officialkabosu"
 
 const NAV_SOCIAL_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "X", href: OFFICIAL_X_URL, external: true },
-  { label: "TG", href: "#official-socials" },
 ]
 
 const imageMap = {
@@ -113,6 +115,34 @@ function MarqueeTape() {
   )
 }
 
+function ContractStrip() {
+  const [copied, setCopied] = useState(false)
+  const hasAddress = CONTRACT_ADDRESS.length > 0
+
+  async function copyAddress() {
+    if (!hasAddress) return
+    await navigator.clipboard.writeText(CONTRACT_ADDRESS)
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 1400)
+  }
+
+  return (
+    <div className="mx-auto mt-8 flex max-w-3xl flex-col overflow-hidden border-[4px] border-black bg-white shadow-[8px_8px_0_#000] md:flex-row">
+      <div className="flex-1 truncate px-4 py-4 font-['Fredoka'] text-sm font-black uppercase text-[#2C2C2C] md:text-base">
+        CA: {CONTRACT_ADDRESS}
+      </div>
+      <button
+        type="button"
+        onClick={copyAddress}
+        disabled={!hasAddress}
+        className="border-t-[4px] border-black bg-[#F6C86A] px-6 py-4 font-['Bungee'] text-sm uppercase text-black transition hover:bg-[#E49A43] disabled:cursor-not-allowed disabled:opacity-50 md:border-l-[4px] md:border-t-0"
+      >
+        {copied ? "Copied" : "Copy"}
+      </button>
+    </div>
+  )
+}
+
 export default function KabosuPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#FCE4EC] font-['Comic_Neue'] text-[#5B392A]">
@@ -207,6 +237,9 @@ export default function KabosuPage() {
               <a href="#about" className="rounded-full border-[4px] border-black bg-white px-10 py-4 font-['Bungee'] text-xl uppercase text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1">
                 Learn More
               </a>
+            </motion.div>
+            <motion.div variants={childVariants}>
+              <ContractStrip />
             </motion.div>
           </div>
 
